@@ -9,12 +9,9 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 //Routes
-app.use('/users', require('./routes/users.routes'));
-
-// app.get('/', (req, res) => {
-//   res.send("Hello world!");
-// });
+const userRoutes =  require('./routes/users.routes');
+app.use('/users', userRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-});
+})
