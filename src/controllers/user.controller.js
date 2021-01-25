@@ -10,10 +10,9 @@ const userController = {
 		const { email, password } = req.body;
 		if (!email || !password) return res.status(400).json({ message: "You must provide required data." });
 		let saved = await userModel.create(email, password);
-		if (!saved) return res.status(500).json({ message: "Saved user failed." });
+		if (!saved) return res.status(500).json({ message: "User already exists." });
 		res.status(201).json({ message: "User created." });
 	}
-
 }
 
 module.exports = userController;
