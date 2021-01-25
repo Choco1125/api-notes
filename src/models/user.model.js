@@ -20,6 +20,16 @@ const userModel = {
 			console.log(`Create user exception: ${e}`);
 			return false;
 		}
+	},
+	async updateEmail(email) {
+		try {
+			const database = await connect();
+			await database.execute("UPDATE users SET emial=?", [email]);
+			return true;
+		} catch (e) {
+			console.log(`Update email user exception: ${e}`);
+			return false;
+		}
 	}
 }
 
