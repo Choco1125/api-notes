@@ -1,4 +1,3 @@
-const { updateEmail } = require("./../models/user.model");
 const userModel = require("./../models/user.model");
 
 const userController = {
@@ -26,6 +25,13 @@ const userController = {
 		}
 		if (!saved) return res.status(500).json({ message: "Can not update user data." });
 		res.status(200).json({ message: "User updated." });
+	},
+	async delete(req, res) {
+		const { id } = req.params;
+		if (!id) return res.status(400).json({ message: "You must provide user id." });
+		let deleted = await userModel.delete(id);
+		if (!deleted) return res.status(500).json({ message: "Can not delete user." });
+		res.status(200).json({ message: "User deleted." });
 	}
 }
 
