@@ -24,7 +24,7 @@ const userModel = {
 	async updateEmail(email) {
 		try {
 			const database = await connect();
-			await database.execute("UPDATE users SET emial=?", [email]);
+			await database.execute("UPDATE users SET email=?", [email]);
 			return true;
 		} catch (e) {
 			console.log(`Update email user exception: ${e}`);
