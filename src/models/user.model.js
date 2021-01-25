@@ -30,6 +30,16 @@ const userModel = {
 			console.log(`Update email user exception: ${e}`);
 			return false;
 		}
+	},
+	async updatePassword(password) {
+		try {
+			const database = await connect();
+			await database.execute("UPDATE users SET password=?", [password]);
+			return true;
+		} catch (e) {
+			console.log(`Update passowrd user exception: ${e}`);
+			return false;
+		}
 	}
 }
 
