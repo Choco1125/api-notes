@@ -21,20 +21,20 @@ const userModel = {
 			return false;
 		}
 	},
-	async updateEmail(email) {
+	async updateEmail(email, id) {
 		try {
 			const database = await connect();
-			await database.execute("UPDATE users SET email=?", [email]);
+			await database.execute("UPDATE users SET email=? WHERE id= ?", [email, id]);
 			return true;
 		} catch (e) {
 			console.log(`Update email user exception: ${e}`);
 			return false;
 		}
 	},
-	async updatePassword(password) {
+	async updatePassword(password, id) {
 		try {
 			const database = await connect();
-			await database.execute("UPDATE users SET password=?", [password]);
+			await database.execute("UPDATE users SET password=? WHERE id = ?", [password, id]);
 			return true;
 		} catch (e) {
 			console.log(`Update passowrd user exception: ${e}`);
