@@ -40,6 +40,16 @@ const userModel = {
 			console.log(`Update passowrd user exception: ${e}`);
 			return false;
 		}
+	},
+	async delete(id) {
+		try {
+			const database = await connect();
+			await database.execute("DELETE FROM users WHERE id = ?", [id]);
+			return true;
+		} catch (e) {
+			console.log(`Delete user exception: ${e}`);
+			return false;
+		}
 	}
 }
 
